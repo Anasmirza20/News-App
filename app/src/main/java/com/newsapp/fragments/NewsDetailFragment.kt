@@ -2,8 +2,11 @@ package com.newsapp.fragments
 
 import android.os.Bundle
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import com.google.android.material.textview.MaterialTextView
 import com.newsapp.R
 import com.newsapp.databinding.FragmentNewsDetailBinding
 import com.newsapp.utils.CommonMethods
@@ -39,7 +42,6 @@ class NewsDetailFragment : Fragment(R.layout.fragment_news_detail) {
                 val item = viewModel.value.selectedItem.value
                 item?.isAlreadyLike = !item?.isAlreadyLike!!
                 setLike(item.isAlreadyLike, like)
-
             }
 
             dislike.setOnClickListener {
@@ -62,12 +64,21 @@ class NewsDetailFragment : Fragment(R.layout.fragment_news_detail) {
                     )
                 }
                 title.text = it.title
-                description.text = getString(R.string.desc, it.description, it.content)
+                setDataIfNotNull(description, it.description)
+                setDataIfNotNull(content, it.content)
                 source.text = getString(R.string.source, it.source.name)
                 date.text = getFormattedDate(it.publishedAt)
                 setLike(it.isAlreadyLike, like)
                 setDislike(it.isAlreadyDislike, dislike)
             }
+        }
+    }
+
+    private fun setDataIfNotNull(textView: MaterialTextView, data: String?) {
+        textView.visibility = if (data.isNullOrEmpty()) GONE
+        else {
+            textView.text = data
+            VISIBLE
         }
     }
 

@@ -28,16 +28,30 @@ class NewsAdapter(
 
                 like.setOnClickListener {
                     val item = getItem(adapterPosition)
-                    item.isAlreadyLike = !item.isAlreadyLike
-                    setLike(item.isAlreadyLike, like)
+                    doLike(item)
+                    if (item.isAlreadyDislike) {
+                        doDislike(item)
+                    }
                 }
 
                 dislike.setOnClickListener {
                     val item = getItem(adapterPosition)
-                    item.isAlreadyDislike = !item.isAlreadyDislike
-                    setDislike(item.isAlreadyDislike, dislike)
+                    doDislike(item)
+                    if (item.isAlreadyLike) {
+                        doLike(item)
+                    }
                 }
             }
+        }
+
+        private fun doLike(item: Article) {
+            item.isAlreadyLike = !item.isAlreadyLike
+            setLike(item.isAlreadyLike, binding.like)
+        }
+
+        private fun doDislike(item: Article) {
+            item.isAlreadyDislike = !item.isAlreadyDislike
+            setDislike(item.isAlreadyDislike, binding.dislike)
         }
 
         fun bind(data: Article) {
@@ -49,7 +63,7 @@ class NewsAdapter(
                     R.drawable.ic_launcher_background
                 )
                 title.text = data.title
-                time.text = context.getString(R.string.min_ago,adapterPosition.toString())
+                time.text = context.getString(R.string.min_ago, adapterPosition.toString())
                 setLike(data.isAlreadyLike, like)
                 setDislike(data.isAlreadyDislike, dislike)
             }

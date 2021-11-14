@@ -42,6 +42,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun setObservers() {
         viewModel.newsList.observe(viewLifecycleOwner) {
+            binding.progressBar.visibility = View.GONE
             if (it != null)
                 newsAdapter?.submitList(it)
         }
