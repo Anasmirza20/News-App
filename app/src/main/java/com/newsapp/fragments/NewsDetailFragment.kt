@@ -9,6 +9,7 @@ import androidx.fragment.app.activityViewModels
 import com.google.android.material.textview.MaterialTextView
 import com.newsapp.R
 import com.newsapp.databinding.FragmentNewsDetailBinding
+import com.newsapp.models.news.Article
 import com.newsapp.utils.CommonMethods
 import com.newsapp.utils.CommonMethods.getFormattedDate
 import com.newsapp.utils.CommonMethods.setDislike
@@ -32,22 +33,25 @@ class NewsDetailFragment : Fragment(R.layout.fragment_news_detail) {
 
     private fun setListeners() {
         binding.apply {
+            val item=viewModel.value.selectedItem.value!!
             moreInfo.setOnClickListener {
-                val url = viewModel.value.selectedItem.value?.url
+                val url = item.url
                 if (!url.isNullOrEmpty())
                     context?.let { it1 -> openBrowser(it1, url) }
             }
 
             like.setOnClickListener {
-                val item = viewModel.value.selectedItem.value
-                item?.isAlreadyLike = !item?.isAlreadyLike!!
-                setLike(item.isAlreadyLike, like)
+                doLike(item)
+                if (item.isAlreadyDislike) {
+                    doDislike(item)
+                }
             }
 
             dislike.setOnClickListener {
-                val item = viewModel.value.selectedItem.value
-                item?.isAlreadyDislike = !item?.isAlreadyDislike!!
-                setDislike(item.isAlreadyDislike, dislike)
+                doDislike(item)
+                if (item.isAlreadyLike) {
+                    doLike(item)
+                }
             }
         }
     }
@@ -80,6 +84,17 @@ class NewsDetailFragment : Fragment(R.layout.fragment_news_detail) {
             textView.text = data
             VISIBLE
         }
+    }
+
+
+    private fun doLike(item: Article) {
+        item.isAlreadyLike = !item.isAlreadyLike
+        setLike(item.isAlreadyLike, binding.like)
+    }
+
+    private fun doDislike(item: Article) {
+        item.isAlreadyDislike = !item.isAlreadyDislike
+        setDislike(item.isAlreadyDislike, binding.dislike)
     }
 
 

@@ -7,7 +7,7 @@ data class Article(
     val publishedAt: String,
     val source: Source,
     val title: String,
-    val url: String,
+    val url: String?,
     val urlToImage: String?,
     var isAlreadyLike: Boolean = false,
     var isAlreadyDislike: Boolean = false,
