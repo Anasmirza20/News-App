@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">News App</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="remember_me">Remember me</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="login">Login</string>
+    <string name="don_t_have_an_account">"Don't have an account? "</string>
+    <string name="sign_up">Sign Up</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="_0">0</string>
+    <string name="liked_by_">Liked by Anas Mirza</string>
+    <string name="min_ago">%1$s min ago</string>
+    <string name="like">Like</string>
+    <string name="dislike">Dislike</string>
+    <string name="source">Source : %1$s</string>
+    <string name="desc">%1$s \n\n %2$s</string>
+    <string name="click_here_to_know_more">Click here to know more</string>
+    <string name="content_description_1">desc_!</string>
+    <string name="my_profile">Linkedin Profile</string>
+    <string name="logout">Logout</string>
+    <string name="github">Github</string>
+    <string name="contact_me">Contact me</string>
+    <string name="my_no">tel:8630921211</string>
+    <string name="linkedin_url">www.linkedin.com/in/anas-mirza-3027b8163</string>
+    <string name="github_link">www.linkedin.com/in/anas-mirza-3027b8163</string>
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/github"
+        android:contentDescription="@string/content_description_1"
+        android:title="@string/github" />
+
+    <item
+        android:id="@+id/linkedin"
+        android:contentDescription="@string/content_description_1"
+        android:title="@string/my_profile" />
+
+    <item
+        android:id="@+id/contact_me"
+        android:contentDescription="@string/content_description_1"
+        android:title="@string/contact_me" />
+
+
+    <item
+        android:id="@+id/logout"
+        android:contentDescription="@string/content_description_1"
+        android:title="@string/logout" />
+
+</menu>
